@@ -17,12 +17,11 @@ export class DashbaordComponent implements OnInit {
   villeSelected;
   
   
-  constructor(private loginService:LoginService ,private meteoService:MeteoService,private router:Router,private activeRoute:ActivatedRoute){
-    if(loginService.isLoggedIn){
-      
-    }
+  constructor(private meteoService:MeteoService,private router:Router,private activeRoute:ActivatedRoute){
+  
+  }
 
-   }
+   
 
   ngOnInit() {
    

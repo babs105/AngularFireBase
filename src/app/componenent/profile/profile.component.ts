@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { AuthFirebaseService } from 'src/app/services/auth-firebase.service';
+
 
 @Component({
   selector: 'app-profile',
@@ -17,11 +20,15 @@ export class ProfileComponent implements OnInit {
   ]
  prenom:string;
  editable=-1;
-  constructor() { }
+ userDetails:any={};
+  constructor(private authFirebaseService :AuthFirebaseService,private activeRoute:ActivatedRoute) { }
 
   ngOnInit() {
-
+      this.userDetails = this.authFirebaseService.isUserLoggedIn();
   }
+
+ 
+
    addToList(name:string){
      this.tab.push({prenom:name});
 

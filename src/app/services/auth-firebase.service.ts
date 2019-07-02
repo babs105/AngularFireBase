@@ -6,11 +6,12 @@ import { auth } from 'firebase';
   providedIn: 'root'
 })
 export class AuthFirebaseService {
+  redirectUrl: string;
 
 
   
 
-  constructor( public angularFireAuth: AngularFireAuth,) { 
+  constructor( public angularFireAuth: AngularFireAuth) { 
     this.angularFireAuth.authState.subscribe(userResponse => {
       if (userResponse) {
         localStorage.setItem('user', JSON.stringify(userResponse));

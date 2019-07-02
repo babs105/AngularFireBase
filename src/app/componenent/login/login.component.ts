@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   // isForgotPassword: boolean;
   
   
-  constructor(private authFirebaseService :AuthFirebaseService,private activeRoute: ActivatedRoute, private loginService:LoginService,private formBuilder: FormBuilder,private router:Router) {
+  constructor(private authFirebaseService :AuthFirebaseService,private activeRoute: ActivatedRoute, private formBuilder: FormBuilder,private router:Router) {
      
     this.checkoutForm = this.formBuilder.group({
       login: '',
@@ -70,6 +70,7 @@ export class LoginComponent implements OnInit {
             this.message=err.message;
           });
         this.isUserLoggedIn();
+       
         
       }, err => {
         this.message=err.message;
@@ -78,27 +79,21 @@ export class LoginComponent implements OnInit {
 
   }
   loginUser(data){
-    this.normal=true;
-    this.message="Authentification en cours....";
-    this.succes=false;
-    this.error=false;
-   
-  //   setTimeout(() =>{
-  //   if(this.loginService.seConnecter(data.login,data.password)){
-  //      this.normal=false
-  //      this.succes=true;
-  //      this.message="Authentification réussie";
-      
-  //      let redirect = this.loginService.redirectUrl ? this.router.parseUrl(this.loginService.redirectUrl) : '/home';
-  //     setTimeout(() => this.router.navigateByUrl(redirect),2000);
-  //   }else{
-  //     this.normal=false;
-  //     this.error=true;
-  //     this.message="Désolé! Authentification échouée";
-     
-     
-  //   } 
-  // },2000);
+    this.authFirebaseService.login(data.login,data.password)
+    .then( res => {
+        console.log(res);
+        
+        this.isUserLoggedIn();
+        
+        this.authFirebaseService.redirectUrl ? this.router.navigateByUrl(this.router.parseUrl(this.authFirebaseService.redirectUrl)):this.router.navigate(['/profile']);
+        
+        
+        
+    }, err => {
+      this.message=err.message;
+    });
+ 
+    
     
   }
 }

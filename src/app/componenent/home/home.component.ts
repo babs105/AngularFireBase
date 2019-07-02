@@ -3,6 +3,7 @@ import { MeteoService } from 'src/app/services/meteo.service';
 import { ActivatedRoute,Router } from '@angular/router';
 
 import { switchMap } from 'rxjs/operators';
+import { AuthFirebaseService } from 'src/app/services/auth-firebase.service';
 
 @Component({
   selector: 'app-home',
@@ -11,10 +12,12 @@ import { switchMap } from 'rxjs/operators';
 })
 export class HomeComponent implements OnInit {
 
-   constructor() { }
+  mes;
+   constructor(private authFirebaseService :AuthFirebaseService) { }
 
   ngOnInit() {
-  
+    this.authFirebaseService.isUserLoggedIn() ? this.mes='':this.mes='Logguez-vous pour voir les details de votre profil';
+   
   }
 
 }

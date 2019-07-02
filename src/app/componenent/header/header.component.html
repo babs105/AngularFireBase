@@ -13,17 +13,17 @@
   </div> 
   <div class="button-link" routerLinkActive="active">
       <a [routerLink]="['/login',{form:'log'}]" >
-        <button  *ngIf="!loginService.isLoggedIn" class="button-login ">
+        <button  *ngIf="!authFirebaseService.isUserLoggedIn()" class="button-login ">
          LOGIN 
        </button>   
       </a>
       <a  >
-        <button (click)="logout()" *ngIf="loginService.isLoggedIn" class="button-login ">
+        <button (click)="logout()" *ngIf="authFirebaseService.isUserLoggedIn()" class="button-login ">
          LOGOUT
        </button>   
       </a>
       <a [routerLink]="['/login',{form:'reg'}]"  >
-        <button  *ngIf="!loginService.isLoggedIn" class="button-login ">
+        <button  *ngIf="!authFirebaseService.isUserLoggedIn()" class="button-login ">
          REGISTER
        </button>   
       </a>
