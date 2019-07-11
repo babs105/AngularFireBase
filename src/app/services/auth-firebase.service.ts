@@ -12,10 +12,16 @@ export class AuthFirebaseService {
   
 
   constructor( public angularFireAuth: AngularFireAuth) { 
+    console.log("DANS CONST AUTHFIREBASE SERVICE ");
     this.angularFireAuth.authState.subscribe(userResponse => {
+      console.log("reponse à la souscription AUTHFIREBASE");
       if (userResponse) {
+        console.log("test user  connecter AUTHFIREBASE");
+        console.log("Enregistrer info user en local AUTHFIREBASE : ",userResponse);
+
         localStorage.setItem('user', JSON.stringify(userResponse));
       } else {
+        console.log("test user not connecter AUTHFIREBASE");
         localStorage.setItem('user', null);
       }
     })
@@ -45,6 +51,7 @@ export class AuthFirebaseService {
  
  
   isUserLoggedIn() {
+   
     return JSON.parse(localStorage.getItem('user'));
   }
  

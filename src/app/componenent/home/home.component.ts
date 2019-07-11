@@ -13,10 +13,14 @@ import { AuthFirebaseService } from 'src/app/services/auth-firebase.service';
 export class HomeComponent implements OnInit {
 
   mes;
-   constructor(private authFirebaseService :AuthFirebaseService) { }
+   constructor(private authFirebaseService :AuthFirebaseService) {
+    console.log("DANS CONST HOME");
+    this.authFirebaseService.isUserLoggedIn() ? this.mes='':this.mes='LOG IN FOR MORE DETAILS IF NOT YET REGISTER YOU';
+    }
 
   ngOnInit() {
-    this.authFirebaseService.isUserLoggedIn() ? this.mes='':this.mes='Logguez-vous pour voir les details de votre profil';
+    console.log("DANS INIT HOME");
+    
    
   }
 

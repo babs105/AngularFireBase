@@ -14,10 +14,13 @@ import { DetailsComponent } from './componenent/details/details.component';
 import { PageNotFoundComponent } from './componenent/page-not-found/page-not-found.component';
 import { MeteoListComponent } from './componenent/meteo-list/meteo-list.component';
 import { AngularFireAuthModule } from "@angular/fire/auth";
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFirestoreModule, FirestoreSettingsToken } from '@angular/fire/firestore';
 import { AngularFireModule } from "@angular/fire";
 import { ButtonSearchComponent } from './componenent/button-search/button-search.component';
 import { SearchPipe } from './Pipes/search.pipe';
+import { CustomerDetailsComponent } from './componenent/customer-details/customer-details.component';
+import { CreateCustomerComponent } from './componenent/create-customer/create-customer.component';
+import { CustomersListComponent } from './componenent/customers-list/customers-list.component';
 
 
 var firebaseConfig = {
@@ -46,7 +49,10 @@ var firebaseConfig = {
     PageNotFoundComponent,
     MeteoListComponent,
     ButtonSearchComponent,
-    SearchPipe
+    SearchPipe,
+    CustomerDetailsComponent,
+    CreateCustomerComponent,
+    CustomersListComponent
   ],
   imports: [
     BrowserModule,
@@ -57,7 +63,7 @@ var firebaseConfig = {
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [{ provide: FirestoreSettingsToken, useValue: {} }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

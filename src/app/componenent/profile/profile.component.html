@@ -1,20 +1,24 @@
-<section class="profile-section">
-    <div class="profile-container">
+
+   
             <div class="card-body" *ngIf="userDetails">
                     <div class="row">
                       <div class="col-sm-12">
                         <ul class="list-group">
-                          <li class="list-group-item"> Bienvenue, espace profile :
-                            {{ userDetails.displayName }}</li>
-                          <li class="list-group-item">Email : <b>{{userDetails.email}}</b></li>
-                          <li class="list-group-item">Verification Email:
-                           <b> {{userDetails.emailVerified ?'Email verifié':'Email  non verifié'}}</b></li>
+                            
+                          <li class="list-group-item"> Bienvenue <b>{{userDetails?.email}}</b></li>
                         
                         </ul>
                       </div>
                     </div>
-                  </div>
-                
+          </div> 
+          <div class="col-sm-4 offset-4">       
+            <nav>
+              <a [routerLink]="['/customers']" class="btn btn-primary active" role="button" routerLinkActive="active">CLIENTS</a>
+              <a [routerLink]="['/add']" class="btn btn-primary active" role="button" routerLinkActive="active">AJOUT</a>
+            </nav>
+          </div>   
+            
+<!--                 
             <div class="input-titre-group">
                 <div>
                     <input class="input-titre" #myInput type="text" name="prenom" [(ngModel)]="prenom" placeholder="Entrer prenom" >
@@ -27,6 +31,4 @@
                         <u *ngIf="editable==i"(click)="updateName(i)">Modifier</u>
                    </p>
             </div>
-        
-    </div>
-  </section>
+         -->

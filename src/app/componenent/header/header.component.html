@@ -11,22 +11,20 @@
         Profile
       </a>
   </div> 
-  <div class="button-link" routerLinkActive="active">
-      <a [routerLink]="['/login',{form:'log'}]" >
-        <button  *ngIf="!authFirebaseService.isUserLoggedIn()" class="button-login ">
-         LOGIN 
+  <div class="button-link">
+      
+        <button *ngIf="!authFirebaseService.isUserLoggedIn()" class="button-login " (click)="loginRegister?login():false">
+        {{loginRegister ?'LOGIN':false }} 
        </button>   
-      </a>
-      <a  >
-        <button (click)="logout()" *ngIf="authFirebaseService.isUserLoggedIn()" class="button-login ">
-         LOGOUT
+      
+        <button *ngIf="authFirebaseService.isUserLoggedIn()" class="button-login " (click)="logout()">
+        LOGOUT
+      </button>   
+       
+        <button *ngIf="!authFirebaseService.isUserLoggedIn()" class="button-login "(click)="loginRegister?register():false">
+        {{loginRegister?'REGISTER':false }} 
        </button>   
-      </a>
-      <a [routerLink]="['/login',{form:'reg'}]"  >
-        <button  *ngIf="!authFirebaseService.isUserLoggedIn()" class="button-login ">
-         REGISTER
-       </button>   
-      </a>
+      
   </div>
       
 </nav>

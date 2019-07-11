@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { LoginService } from '../services/login-service';
+
 import { AuthFirebaseService } from '../services/auth-firebase.service';
 
 @Injectable({
@@ -22,7 +22,7 @@ export class AuthGuard implements CanActivate {
     this.authFirebaseService.redirectUrl = url;
 
     // Navigate to the login page with extras
-    this.router.navigate(['/login']);
+    this.router.navigate(['/login',{form:"log"}]);
     //cette navigation annule automatiquement la navigation actuelle donc la methode return false
     //mais on peut etre beaucoup plus explicite en ajoutant lr return false
 

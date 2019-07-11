@@ -10,20 +10,45 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   
-  constructor(private authFirebaseService :AuthFirebaseService,private router:Router) { }
+  loginRegister=true;
+ 
+  constructor(
+    private authFirebaseService :AuthFirebaseService,
+    private router:Router)
+     { 
+    console.log("DANS const header");
+    // this.userDetails=this.authFirebaseService.isUserLoggedIn();
+    //console.log("userDeatails dans const",this.userDetails);
+  }
 
   ngOnInit() {
+   
   }
 
   logout(){
     
   this.authFirebaseService.logout().then(res => {
-    console.log(res) ;
+    console.log("DAns logout",res) ;
     
     localStorage.removeItem('user');
+    // this.userDetails=null;
+    this.loginRegister=true;
     this.router.navigate(['/home'])
+
   })
  ,err =>  console.log(err.message)
  }
 
+
+ login(){
+  this.loginRegister=true;
+
+  this.router.navigate(['/login',{form:'log'}])
+}
+
+register(){
+  this.loginRegister=true;
+  
+  this.router.navigate( ['/login',{form:'reg'}]);
+}
 }

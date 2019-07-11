@@ -1,43 +1,30 @@
 <section class="login-section">
+    
   <div class="login-container">
-    <form #labeldisplay="ngForm" (ngSubmit)="changerTitle(labeldisplay.value)">
+    <!-- <form #labeldisplay="ngForm" >
       <div class="input-titre-group">
           <input class="input-titre" required type="text" name="titre"  [(ngModel)]="titre" placeholder="Entrer nouveau titre" >
-          <button class="button-change-titre"  [disabled]="labeldisplay.invalid" type="submit"  > Changer le titre</button>
+          <button class="button-change-titre"  [disabled]="labeldisplay.invalid" type="submit"  > Changer le titre</button> 
       </div>
     </form> 
-      <!-- {{it.value}} -->
-      <!-- <form #userlogin = "ngForm" (ngSubmit) = "seConnecter(userlogin.value)" >
-              <div class="form-group">
-                  <p class="display-titre">{{titre}}</p>
-                  <input class="input-login" type="text" placeholder="login" name="login" ngModel> 
-                  <input class="input-password" type="password"   placeholder="password" name="password" ngModel>
-                  <button class="button-seconnecter" type="submit" >SE CONNECTER</button>
-                  <p class="alert-result">{{res}}</p>
-              </div>
-             
-      </form> -->
-       <p>{{message}}</p>
-         <!-- <p [class.normal]="true"  *ngIf="normal" >{{message}}</p>
-         <p [class.vert]="true" *ngIf="succes" >{{message}}</p>
-         <p [class.red]="true" *ngIf="error" >{{message}}</p> -->
+     -->
+     
+     <p class="message-info">{{message}}</p>
+      
       <form [formGroup]="checkoutForm" *ngIf="affichFormLogin"   (ngSubmit) = "loginUser(checkoutForm.value)" >
-    
-        <div class="form-group">
+         
+        <div class="myForm-group">
             <h3 style=" text-align: center"class="display-titre">{{titre}}</h3>
-            <input class="input-login"  required type="text" placeholder ="login" formControlName ="login" > 
-            <input class="input-password" required type="password"  placeholder ="password" formControlName ="password">
+            <input class="input-login"  required type="text" placeholder ="Email" formControlName ="login" > 
+            <input class="input-password" required type="password"  placeholder ="Password" formControlName ="password">
             <button class="button-seconnecter"   [disabled]=checkoutForm.invalid type="submit">LOG IN</button>
-           
-            
         </div>
-     </form>  
-    
-    <form [formGroup]="checkoutForm" *ngIf="!affichFormLogin" (ngSubmit) = "registerUser(checkoutForm.value)" >
-        <div class="form-group">
+     </form> 
+     <form [formGroup]="checkoutForm" *ngIf="!affichFormLogin" (ngSubmit) = "registerUser(checkoutForm.value)" >
+        <div class="myForm-group">
             <h3 style=" text-align: center"class="display-titre">{{titre}}</h3>
-            <input class="input-login"  required type="text" placeholder ="login" formControlName ="login" > 
-            <input class="input-password" required type="password"  placeholder ="password" formControlName ="password">
+            <input class="input-login"  required type="text" placeholder ="Email" formControlName ="login" > 
+            <input class="input-password" required type="password"  placeholder ="Password" formControlName ="password">
            
             <button class="button-seconnecter"  [disabled]=checkoutForm.invalid type="submit">REGISTER</button>
             

@@ -21,10 +21,17 @@ export class ProfileComponent implements OnInit {
  prenom:string;
  editable=-1;
  userDetails:any={};
-  constructor(private authFirebaseService :AuthFirebaseService,private activeRoute:ActivatedRoute) { }
-
+  constructor(private authFirebaseService :AuthFirebaseService) { 
+    console.log("Dans CONST profile");
+  }
+  
   ngOnInit() {
+    console.log("Dans init profile load userdetails");
+    if(this.authFirebaseService.isUserLoggedIn()){
       this.userDetails = this.authFirebaseService.isUserLoggedIn();
+    }else{
+      alert("Vous netes pase connectes");
+    }
   }
 
  

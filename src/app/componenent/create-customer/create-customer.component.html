@@ -1,0 +1,16 @@
+<div class="col-sm-8 offset-2" >
+<h3>AJOUT CLIENT</h3>
+<form  #formAddCustomer="ngForm" [hidden]="submitted" (ngSubmit)="onSubmit()" >
+    <div class=form-group>
+        <input type="text" name="name" id="name" required  [(ngModel)]="customer.name" class="form-control" placeholder="Nom">
+    </div>
+    <div class=form-group>
+        <input type="text" name="age" id="age" required [(ngModel)]="customer.age" class="form-control" placeholder="Age">
+    </div>
+    <button  [disabled]="formAddCustomer.invalid" type="submit" class="btn btn-success">AJOUTER</button>
+</form>
+<div [hidden]="!submitted">
+    <h4>Requete envoyée avec succes!</h4>
+    <button class="btn btn-success" (click)="newCustomer()">AJOUTER NOUVEAU CLIENT</button>
+</div>
+</div>
