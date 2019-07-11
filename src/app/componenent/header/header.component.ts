@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
   loginRegister=true;
  
   constructor(
-    private authFirebaseService :AuthFirebaseService,
+    public authFirebaseService :AuthFirebaseService,
     private router:Router)
      { 
     console.log("DANS const header");
